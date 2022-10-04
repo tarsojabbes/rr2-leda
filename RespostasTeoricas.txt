@@ -1,0 +1,17 @@
+TIPOS GENÉRICOS EM JAVA
+1. O uso dos tipos genéricos nos permite programar um código com
+uma camada de abstração na parte de tipagem, na medida que permite
+criá-los de maneira extensível e sem castings excessivos, dada a
+natureza de algumas estrutura de dados. Como declaramos o tipo esperado
+nas estruturas, temos noção de corretude e maior controle sobre a tipagem
+em tempo de compilação, além de melhorar a leitura e robustez.
+
+2. Podemos fazer isso utilizando do "formal type parameters", no qual
+definimos a classe como "public class A <E> {}". Com isso, poderemos
+instanciar o método "public void m(E o) {}". Com isso, ao instanciar nossa
+classe A, podemos definir um generics que será utilizado nos métodos que
+recebem E como parâmetro.
+
+3. Fazemos com que A implemente B, como "A <E> implements B {}", e criamos uma
+sobrecarga de métodos, possuindo tanto "public void m(E o) {}" quanto "public
+void m(String s) {}"
