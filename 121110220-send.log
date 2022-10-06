@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-09-29T11:33:46.524-0300</date>
+  <logger>TARSO JABBES LIMA DE OLIVEIRA</logger>
+  <level>FINE</level>
+  <message>File 121110220-TARSO JABBES LIMA DE OLIVEIRA.zip was received. It was sent by TARSO JABBES LIMA DE OLIVEIRA from IP 150.165.42.174 at 29-09-2022 11*33*46</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-10-04T08:48:33.842-0300</date>
+  <logger>TARSO JABBES LIMA DE OLIVEIRA</logger>
+  <level>FINE</level>
+  <message>File 121110220-TARSO JABBES LIMA DE OLIVEIRA.zip was received. It was sent by TARSO JABBES LIMA DE OLIVEIRA from IP 150.165.42.168 at 04-10-2022 08*48*33</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-10-06T12:00:07.646-0300</date>
+  <logger>TARSO JABBES LIMA DE OLIVEIRA</logger>
+  <level>FINE</level>
+  <message>File 121110220-TARSO JABBES LIMA DE OLIVEIRA.zip was received. It was sent by TARSO JABBES LIMA DE OLIVEIRA from IP 192.168.18.12 at 06-10-2022 12*00*07</message>
+</record>
