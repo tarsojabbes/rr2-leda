@@ -1,6 +1,8 @@
 package produto;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Classe que representa um repositório de produtos usando ArrayList como
@@ -11,13 +13,13 @@ import java.util.ArrayList;
  *
  * @author Adalberto
  */
-public class RepositorioProdutoArrayList {
+public class RepositorioProdutoArrayList<T extends Produto> implements RepositorioProdutos<T> {
 
 	/**
 	 * A estrutura onde os produtos sao mantidos. Voce nao precisa se preocupar
 	 * por enquanto com o uso de generics em ArrayList.
 	 */
-	private ArrayList produtos;
+	private ArrayList<T> produtos;
 
 	/**
 	 * A posicao do ultimo elemento inserido no array de produtos. o valor
@@ -27,7 +29,7 @@ public class RepositorioProdutoArrayList {
 
 	public RepositorioProdutoArrayList(int size) {
 		super();
-		this.produtos = new ArrayList();
+		this.produtos = new ArrayList<T>();
 	}
 
 	/**
@@ -35,32 +37,41 @@ public class RepositorioProdutoArrayList {
 	 * -1 caso ele nao se encontre no array. Esse método é util apenas na
 	 * implementacao com arrays por questoes de localizacao. Outras classes que
 	 * utilizam outras estruturas internas podem nao precisar desse método.
-	 * 
+	 *
 	 * @param codigo
 	 * @return
 	 */
 	private int procurarIndice(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for (int i = 0; i < this.produtos.size(); i++) {
+			if (this.produtos.get(i) == null) {
+				return -1;
+			}
+			if (this.produtos.get(i).getCodigo() == codigo) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	/**
 	 * Recebe o codigo e diz se tem produto com esse codigo armazenado
-	 * 
+	 *
 	 * @param codigo
 	 * @return
 	 */
 	public boolean existe(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for (Produto p : this.produtos) {
+			if (p != null && p.getCodigo() == codigo) return true;
+		}
+		return false;
 	}
 
 	/**
 	 * Insere um novo produto (sem se preocupar com duplicatas)
 	 */
-	public void inserir(Produto produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+	public void inserir(T produto) {
+		this.produtos.add(produto);
+		index++;
 	}
 
 	/**
@@ -68,32 +79,43 @@ public class RepositorioProdutoArrayList {
 	 * esteja no array. Note que, para localizacao, o código do produto será
 	 * utilizado.
 	 */
-	public void atualizar(Produto produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+	public void atualizar(T produto) {
+		int indice = procurarIndice(produto.getCodigo());
+		if (indice == -1) {
+			throw new RuntimeException();
+		}
+		this.produtos.set(indice, produto);
 	}
 
 	/**
 	 * Remove produto com determinado codigo, se existir, ou entao retorna um
 	 * erro, caso contrário. Note que a remoção NÃO pode deixar "buracos" no
 	 * array.
-	 * 
+	 *
 	 * @param codigo
 	 */
 	public void remover(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int indice = procurarIndice(codigo);
+		if (indice == -1) {
+			throw new RuntimeException();
+		}
+		this.produtos.remove(indice);
+		index--;
 	}
 
 	/**
 	 * Retorna um produto com determinado codigo ou entao um erro, caso o
 	 * produto nao esteja armazenado
-	 * 
+	 *
 	 * @param codigo
 	 * @return
 	 */
-	public Produto procurar(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+	public T procurar(int codigo) {
+		List<T> listaProdutos = this.produtos.stream().filter((x) -> x.getCodigo() == codigo).collect(Collectors.toList());
+		if (listaProdutos.size() == 0) {
+			throw new RuntimeException();
+		}
+		return listaProdutos.get(0);
 	}
+
 }

@@ -9,10 +9,10 @@ import java.util.Comparator;
  * @author Adalberto
  *
  */
-public class Vetor {
+public class Vetor<E> {
 
 	// O array interno onde os objetos manipulados são guardados
-	private Object[] arrayInterno;
+	private E[] arrayInterno;
 
 	// O tamanho que o array interno terá
 	private int tamanho;
@@ -39,33 +39,58 @@ public class Vetor {
 	}
 
 	// Insere um objeto no vetor
-	public void inserir(Object o) {
-		// TODO Remove the exception and implement your code
-		throw new UnsupportedOperationException("Not implemented yet!");
+	public void inserir(E o) {
+		if (!isCheio()) {
+			this.arrayInterno[indice + 1] = o;
+			indice++;
+		}
 	}
 
 	// Remove um objeto do vetor
-	public Object remover(Object o) {
-		// TODO Remove the exception and implement your code
-		throw new UnsupportedOperationException("Not implemented yet!");
+	public E remover(E o) {
+		int indiceObjeto = procuraIndice(o);
+
+		if (indiceObjeto != -1) {
+			this.arrayInterno[indiceObjeto] = null;
+			return o;
+		}
+
+		return null;
 	}
 
 	// Procura um elemento no vetor
-	public Object procurar(Object o) {
-		// TODO Remove the exception and implement your code
-		throw new UnsupportedOperationException("Not implemented yet!");
+	public E procurar(E o) {
+		for (E e : this.arrayInterno) {
+			if (e.equals(o)) {
+				return e;
+			}
+		}
+		return null;
 	}
 
 	// Diz se o vetor está vazio
 	public boolean isVazio() {
-		// TODO Remove the exception and implement your code
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return this.indice == -1;
 	}
 
 	// Diz se o vetor está cheio
 	public boolean isCheio() {
-		// TODO Remove the exception and implement your code
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return this.indice >= this.tamanho;
+	}
+
+	private void moveItensParaEsquerda(int indiceInicio) {
+		for (int i = indiceInicio; i < this.arrayInterno.length; i++) {
+			this.arrayInterno[i] = this.arrayInterno[i + 1];
+		}
+	}
+
+	private int procuraIndice(E o) {
+		for (int i = 0; i < this.arrayInterno.length; i++) {
+			if (arrayInterno[i].equals(o)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 }

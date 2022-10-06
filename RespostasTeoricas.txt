@@ -6,12 +6,18 @@ natureza de algumas estrutura de dados. Como declaramos o tipo esperado
 nas estruturas, temos noção de corretude e maior controle sobre a tipagem
 em tempo de compilação, além de melhorar a leitura e robustez.
 
-2. Podemos fazer isso utilizando do "formal type parameters", no qual
-definimos a classe como "public class A <E> {}". Com isso, poderemos
-instanciar o método "public void m(E o) {}". Com isso, ao instanciar nossa
-classe A, podemos definir um generics que será utilizado nos métodos que
-recebem E como parâmetro.
+5. Teremos um método que não retorna nada e que aceita como parâmetro
+coleções de java que armazenam objetos do tipo passado como "formal type
+parameters" quando a classe a que ele pertence foi instanciada.
 
-3. Fazemos com que A implemente B, como "A <E> implements B {}", e criamos uma
-sobrecarga de métodos, possuindo tanto "public void m(E o) {}" quanto "public
-void m(String s) {}"
+6. Teremos um método que não retorna nada mas que aceita como parâmetros
+ coleções de java que o supertipo de todas as coleções, representado
+   por um <?> (wildcard)
+
+ 7. Nosso método aceita que o parâmetro passado seja de qualquer tipo
+ desde que seja um subtipo do tipo passado na instanciação do objeto.
+ É um exemplo do que chamamos de "bounded wildcards"
+
+ 8. Nosso método aceita que o parâmetro passado de qualquer tipo
+ desde que ele seja um supertipo do tipo passado na instanciação.
+

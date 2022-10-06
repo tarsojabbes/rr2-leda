@@ -1,6 +1,6 @@
 package tutorial;
 
-public class A <E>{
+public interface A <E> extends B {
 
-    public void m(E o) {}
+    public void m(E o);
 }
